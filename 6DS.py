@@ -47,16 +47,16 @@ def get_names(available_links):
     return persons
 
 # Fetch names from page (threaded for I/O)
-def fetch_names(title):
-    with cache_lock:
-        if title in names_cache:
-            return names_cache[title]
-    page = get_wiki(title)  # network I/O
-    links = get_links(page)
-    names = get_names(links)  # CPU-bound
-    with cache_lock:
-        names_cache[title] = names
-    return names
+# def fetch_names(title):
+#     with cache_lock:
+#         if title in names_cache:
+#             return names_cache[title]
+#     page = get_wiki(title)  # network I/O
+#     links = get_links(page)
+#     names = get_names(links)  # CPU-bound
+#     with cache_lock:
+#         names_cache[title] = names
+#     return names
 
 # --- bidirectional BFS with persistent threads ---
 def bidirectional_bfs_threaded(source, target, max_depth=6, max_workers=10):

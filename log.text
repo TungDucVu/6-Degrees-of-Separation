@@ -1,0 +1,13 @@
+1. v1: Bfs:
+    - running from source -> target: 1-direction
+
+2. v2: Bidirectional bfs: 
+    - 2 threads: s->t and t->s
+    - stop if met the other side
+
+3. v3: Optimized threaded BFS
+    - create ThreadPoolExecutor, reusing this throughout BFS
+    - threads only handle Wiki page fetching
+    - SpaCy run sequentially
+    - Aggressive caching: prevents repeats
+    - currently fastest
